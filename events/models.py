@@ -10,7 +10,7 @@ class Event(models.Model):
 
 
 class Question(models.Model):
-    event = models.ForeignField(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=255)
     pub_date = models.DateTimeField('Published Date')
 
