@@ -9,8 +9,17 @@ class Event(models.Model):
         return self.name
 
 
-class Question(models.Model):
+class Poll(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    pub_date = models.DateTimeField('Published Date')
+
+    def __str__(self):
+        return self.name
+
+
+class Question(models.Model):
+    poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=255)
     pub_date = models.DateTimeField('Published Date')
 
